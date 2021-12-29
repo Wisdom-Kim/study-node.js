@@ -1,8 +1,8 @@
 # 알찬 방학을 위한^^..Node.js 교과서 스터디
 
-화..화이팅~!
-<img src="https://t1.daumcdn.net/cfile/tistory/2712F24D55A3C5AB01.jpg">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbJiZF5ERx3p2QZFMXfOCdKMU0KQfUeCKupwu6kzOdUaZOUz8pKDad9diXl9tEdlX-jqo&usqp=CAU.jpg" width="30%" height="30%"/>
 
+화..화이팅~!
 
 ## 스터디 개요
 
@@ -29,7 +29,8 @@
 ### 스터디 교재 소개
 
 Node.js 교과서, 조현영 지음
-<img src="https://www.google.com/url?sa=i&url=http%3A%2F%2Fwww.yes24.com%2FProduct%2FGoods%2F62597864&psig=AOvVaw1CJLHuzog6ooXNiMsONYkf&ust=1640872084970000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCOic9_-SifUCFQAAAAAdAAAAABAD.jpg" width="50%" height="50%"/>
+
+<img src="https://image.yes24.com/goods/62597864/XL.jpg" width="30%" height="30%"/>
 
 ## 1 장 노드 시작하기
 1.1 핵심 개념 이해하기
