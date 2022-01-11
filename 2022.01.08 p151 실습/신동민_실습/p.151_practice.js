@@ -1,20 +1,25 @@
 const fs = require('fs');
 
-function readFile(i) {
-    fs.readFile('./readme.txt', (err,data)=>{
-        if (err){
-            throw err;
-        }
-        console.log(i, data.toString());
+function readFile() {
+    return new Promise((resolve, reject) => {
+        fs.readFile('./readme.txt', (err,data)=>{
+            if (err){
+                reject(err);
+            }
+            resolve(data);
+        })  
     })
 }
 
 async function readFileToDo(){
-    for (i=1; i<4; i++){
-        await readFile(i);
-    } 
+    const fileData = await readFile();
+    console.log(1, fileData.toString());
+    const fileData2 = await readFile();
+    console.log(2, fileData2.toString());
+    const fileData3 = await readFile();
+    console.log(3, fileData3.toString());
 }
 
 console.log('시작');
-readFileToDo();
 console.log('끝');
+readFileToDo();
