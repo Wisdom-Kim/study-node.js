@@ -7,12 +7,13 @@ const { user } = require('../models');
 
 const router = express.Router();
 
+//회원가입 API
 router.post('/join-user', isNotLoggedIn, async (req, res, next)=> {
     const { email, user_password, name, nickname, phone_number } = req.body;
     try {
         const exUser = await user.findOne({where: { email }});
         if (exUser) {
-            req.flash('joinError', '이미 가입된 이메일입니다')
+            req.flash('joinError', '이미 가입된 이메일입니다');
             return res.redirect('/join');
         }
         await user.create({
@@ -29,6 +30,7 @@ router.post('/join-user', isNotLoggedIn, async (req, res, next)=> {
     }
 });
 
+//로그인 API
 router.post('/login-user', isNotLoggedIn, (req,res,next)=>{
     passport.authenticate('local', {session:false}, (authError, user, info)=>{
         if (authError){
@@ -49,16 +51,18 @@ router.post('/login-user', isNotLoggedIn, (req,res,next)=>{
     })(req, res, next);
 });
 
+//로그아웃 API
 router.get('/logout-user', isLoggedIn, (req,res)=>{
     req.logOut();
     req.session.destroy();
     res.redirect('/');
 });
 
-router.delete(`/${user.id}`, isLoggedIn, (req, res)=> {
+//회원탈퇴 API
+router.delete(':id', isLoggedIn, (req, res)=> {
     user.destroy({
         where: {
-            id: req.session.userid,
+            id: req.session.user.id,
         },
     }).then(()=> {
         req.session.destroy();
