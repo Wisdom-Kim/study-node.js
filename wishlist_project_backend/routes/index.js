@@ -5,5 +5,5 @@ const { post, user } = require('../models');
 const router = express.Router();
 
 router.get('/', (req,res,next)=>{
-    res.end('sucess');
+    return res.status(200);
 });

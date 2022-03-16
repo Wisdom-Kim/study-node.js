@@ -18,26 +18,6 @@ router.post('/', async(req, res, next)=>{
     }
 });
 
-// router.get('/list', async(req, res, next)=>{
-//     try{
-//         const rows = await wishlist.findAll();
-//         if (rows) return res.status(200).json({result : rows});
-//         else throw console.log(error);
-//     } catch(err){
-//         console.error(err);
-//     }
-// });
-
-// router.get(`/:id`, (req, res, next)=>{
-//     try{
-//         const _url = req.url;
-//         const queryData = url.parse(_url, true).query;
-//         console.log(queryData);
-//     }catch(err){
-//         console.error(err);
-//     }
-// })
-
 router.patch('/:id',isLoggedIn, async(req, res, next)=>{
     try{
         const {list_content} = req.body;
@@ -63,5 +43,20 @@ router.delete('/:id',isLoggedIn, async(req, res, next)=>{
       console.error(err);
     }
 });
+
+router.get('/', async(req, res, next)=>{
+    try{
+        const rows = await wishlist.findAll();
+        const length = Object.keys(rows).length;
+        console.log(length);
+        const id = Math.floor(Math.random()*(length)) + 1;
+        const list = await wishlist.findOne({
+            where:{id}
+        });
+        return res.status(200).json({result : list});
+    } catch {
+        console.error(err);
+    }
+})
 
 module.exports = router;
