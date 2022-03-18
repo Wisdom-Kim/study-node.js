@@ -23,6 +23,7 @@ router.post('/join-user', isNotLoggedIn, async (req, res, next)=> {
             nickname,
             phone_number
         })
+        return res.redirect('/');
     } catch(error) {
         console.error(error);
         return next(error);
@@ -38,12 +39,14 @@ router.post('/login-user', isNotLoggedIn, (req,res,next)=>{
         }
         if (!user) {
             req.flash('login-error', info.message);
+            return res.redirect('/');
         }
         return req.login(user, (loginError) => {
             if (loginError) {
                 console.error(loginError);
                 return next(loginError);
             }
+            return res.redirect('/');
         })
     })(req, res, next);
 });
@@ -52,6 +55,7 @@ router.post('/login-user', isNotLoggedIn, (req,res,next)=>{
 router.get('/logout-user', isLoggedIn, (req,res)=>{
     req.logOut();
     req.session.destroy();
+    return res.redirect('/');
 });
 
 //회원탈퇴 API
@@ -63,6 +67,7 @@ router.delete('/:id', isLoggedIn, (req, res)=> {
     }).then(()=> {
         req.session.destroy();
         res.status(200).send('탈퇴 처리되었습니다');
+        res.redirect('/');
     }).catch((err)=>{
         console.error(err);
         res.status(500).send('err');

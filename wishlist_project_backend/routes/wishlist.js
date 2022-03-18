@@ -18,6 +18,7 @@ router.post('/', async(req, res, next)=>{
     }
 });
 
+//위시리스트 수정
 router.patch('/:id',isLoggedIn, async(req, res, next)=>{
     try{
         const {list_content} = req.body;
@@ -34,6 +35,7 @@ router.patch('/:id',isLoggedIn, async(req, res, next)=>{
     }
 });
 
+//위시리스트 삭제
 router.delete('/:id',isLoggedIn, async(req, res, next)=>{
     try{
       const rows = await wishlist.destroy({where: {id: req.params.id}});
@@ -44,6 +46,8 @@ router.delete('/:id',isLoggedIn, async(req, res, next)=>{
     }
 });
 
+
+//위시리스트 랜덤 추첨
 router.get('/', async(req, res, next)=>{
     try{
         const rows = await wishlist.findAll();
@@ -53,7 +57,7 @@ router.get('/', async(req, res, next)=>{
         const list = await wishlist.findOne({
             where:{id}
         });
-        return res.status(200).json({result : list});
+        return res.status(200).json({list});
     } catch {
         console.error(err);
     }

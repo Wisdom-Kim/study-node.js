@@ -44,6 +44,7 @@ router.post('/', isLoggedIn, upload2.none(), async(req, res, next)=>{
             img_path: req.body.img_path,
             user_id: req.session.user.id,
         });
+        res.redirect('/');
     } catch (err){
         console.error(err);
         next(err);
