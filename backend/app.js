@@ -26,6 +26,9 @@ db.sequelize.authenticate()
 })
 passportConfig(passport);
 
+app.use(require('connect-history-api-fallback')());
+//vue router와 연동을 위한 모듈 추가
+
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
