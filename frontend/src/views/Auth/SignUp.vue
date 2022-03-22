@@ -268,14 +268,19 @@
 				emailCheck: false,
 			};
 		},
+		/*
 		methods: {
 			signUp: function (obj) {
+				
 				if (obj.password !== obj.password1) {
 					alert("비밀번호가 서로 일치하지 않습니다.");
 					return;
 				}
 				this.$store.dispatch("POST_SIGNUP", obj);
+				
+				
+				
 			},
-		},
+		*/
 	};
 </script>

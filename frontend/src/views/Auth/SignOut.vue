@@ -94,28 +94,13 @@
 </style>
 
 <script>
-	import UserLayoutVue from "../../components/user/UserLayout.vue";
-
 	export default {
 		name: "SignOut",
-		components: {
-			UserLayoutVue,
-		},
 		data: function () {
 			return {
 				password: "",
 				signOutCheck: false,
 			};
-		},
-		methods: {
-			signOut: function (obj) {
-				const res = confirm("정말 탈퇴하시겠습니까?");
-				if (res) {
-					this.$store.dispatch("DELETE_USER", obj);
-				} else {
-					return;
-				}
-			},
 		},
 	};
 </script>

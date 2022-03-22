@@ -100,11 +100,6 @@
 				keywordUrl: "", //댓글쓰기 누르면 반복문을 멈추고 피드가 하나만 보이도록 하기 위함
 			};
 		},
-		computed: {
-			wishes() {
-				return this.$store.state.wishes;
-			},
-		},
 		components: {
 			TheHeaderVue,
 			TheWishCard,
@@ -114,12 +109,6 @@
 				this.selectedFile = this.$refs.feedImage.files[0];
 				console.log(this.$refs.feedImage.files[0]);
 			},
-			onSubmit: function () {
-				this.$store.dispatch("POST_WISH", { content: this.content, image: this.selectedFile });
-			},
-		},
-		mounted() {
-			this.$store.dispatch("GET_WISHES");
 		},
 	};
 </script>

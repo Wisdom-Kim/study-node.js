@@ -8,18 +8,14 @@
 				<router-link to="/wishlist">
 					<span>위시리스트</span>
 				</router-link>
-				<router-link to="/feeds">
-					<span>일기쓰기</span>
-				</router-link>
 			</div>
 		</div>
 		<div class="header__sign" :style="style">
 			<div v-if="!isLoggedIn">
-				<router-link to="/users/signin">로그인</router-link>
-				<router-link to="/users/signup">회원가입</router-link>
+				<router-link to="/users/login-user">로그인</router-link>
+				<router-link to="/users/join-user">회원가입</router-link>
 			</div>
 			<div v-else>
-				<router-link to="/users/me">{{ userInfo.nickname }}</router-link>
 				<span class="logout__btn" @click="LOGOUT">로그아웃</span>
 			</div>
 		</div>
@@ -67,12 +63,11 @@
 </style>
 
 <script>
-	import { mapState, mapMutations } from "vuex";
+	import { mapMutations } from "vuex";
 	export default {
 		name: "TheHeader",
 		props: ["color"],
 		computed: {
-			...mapState(["isLoggedIn", "userInfo"]),
 			style() {
 				return { "--color": this.color };
 			},
